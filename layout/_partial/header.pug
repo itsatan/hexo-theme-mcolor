@@ -1,0 +1,16 @@
+header#header
+    .container.header
+        div#logo
+            a(href="/")
+                span Mcolor Theme
+        #search-wrap
+            .search-area
+                input(type="search" placeholder="搜索感兴趣的知识和文章" autocomplete="off")#local-search-input.search-input
+                ul.dropdown-menu
+                    li
+                        span.dropdown-menu-title 搜索结果：
+                    #local-search-result
+                    .search-response-null
+                        span 嘿，暂时无法找到与搜索相关的内容 ～
+            button.search-form-input
+                i.iconfont.icon-search

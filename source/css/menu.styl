@@ -1,0 +1,35 @@
+@import '_variables';
+
+#menu {
+    border-radius: 10px;
+    box-shadow: none;
+    background-color: $primary-bg;
+
+    .list {
+        padding: 10px 0;
+        margin: 0 5px;
+        white-space: nowrap;
+
+        a {
+            cursor: pointer;
+            font-weight: 700;
+            line-height: 1;
+            border-radius: 8px;
+            padding: 8px 18px !important;
+            margin: 0 5px;
+            white-space: nowrap;
+            display: inline-block;
+            color: $text-defaulr-color;
+
+            &:hover {
+                color: $text-active-color;
+                background-color: $primary-color;
+            }
+        }
+
+        .active {
+            color: $text-active-color;
+            background-color: $primary-color;
+        }
+    }
+}

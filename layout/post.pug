@@ -1,0 +1,32 @@
+article#post
+    #post-header
+        h2#post-title #{page.title}
+        #secondary
+            if page.categories
+                each category in page.categories.data
+                    a(href=url_for(category.path)) #{ category.name }
+                span.line /
+            if page.tags
+                each tag in page.tags.data
+                    a(href=url_for(tag.path)) #{ tag.name }
+        #extra
+            span #{ time(page.date, 'YYYY-MM-DD') }
+            div.extra-info
+                .post-count 字数统计约:&nbsp;
+                    = wordcount(page.content)
+                .post-time 阅读时长约:&nbsp;
+                    = min2read(page.content) + '分钟'
+    #post-content
+        != page.content
+    #post-abstract
+        if theme.copyright.enable
+            include ./_partial/copyright.pug
+    #post-pager
+        .prev
+            if page.prev
+                p 上一篇
+                a(href=url_for(page.prev.path), title=page.prev.title) #{ page.prev.title }
+        .next
+            if page.next
+                p 下一篇
+                a(href=url_for(page.next.path), title=page.next.title) #{ page.next.title }

@@ -1,0 +1,38 @@
+@import '_variables';
+
+#footer {
+    height: 70px;
+    color: #8599ab;
+    background-color: $primary-bg;
+    border-top: 1px solid rgba(133, 153, 171, 0.2);
+    box-shadow: 0 2px 26px 0 rgba(133, 153, 171, 0.1);
+}
+
+.footer {
+    height: 100%;
+    background-color: $primary-bg;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    word-spacing: 4px;
+    order: 3;
+    font-size: 12px;
+    line-height: 16px;
+    color: #8599ab;
+
+    .footer_left {
+        text-align: left;
+    }
+
+    .footer_right {
+        text-align: right;
+        a {
+            margin: 0 10px;
+            color: #8599ab;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+}

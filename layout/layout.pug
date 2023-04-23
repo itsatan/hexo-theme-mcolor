@@ -1,0 +1,42 @@
+- var pageTitle = page.title || config.subtitle || ''
+- if (is_archive()) pageTitle = '归档'
+- if (is_tag()) pageTitle = 'Tag: ' + page.tag
+- if (is_category()) pageTitle = 'Category: ' + page.category
+- if (is_month()) pageTitle += ': ' + page.month + '/' + page.year
+- if (is_year()) pageTitle += ': ' + page.year
+- pageTitle += ' [ ' + config.title + ' ]'
+
+- var top = is_post() ? '0px' : '60px'
+- var padding = is_post() ? '35px 0px;' : '20px 0;'
+- var bodyBackgroundColor = is_post() ? 'linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);' : '#f6f8fe;'
+
+doctype html
+html(lang=config.language)
+    head
+        meta(charset='UTF-8')
+        title= pageTitle
+        if theme.stylesheets !== undefined && theme.stylesheets.length > 0
+        each url in theme.stylesheets
+            link(rel='stylesheet', href=url)
+    body(style=`background:${bodyBackgroundColor}`)
+        if !is_post()
+            include ./_partial/header.pug
+        main(style=`margin-top:${top};padding:${padding}`)
+            section.container(style="overflow: hidden") !{ body }
+        if is_post()
+            include ./_partial/close.pug
+        if theme.tool_enable
+            include ./_partial/tool.pug
+        if !is_post()
+            include ./_partial/footer.pug
+        if theme.scripts !== undefined && theme.scripts.length > 0
+        script(src="https://code.jquery.com/jquery-3.6.0.min.js")
+        each url in theme.scripts
+            script(src=url)
+        script(type='text/javascript').
+            var search_path = "#{config.search.path}";
+            if (search_path.length == 0) {
+                search_path = "search.xml";
+            }
+            var path = "#{config.root}" + search_path;
+            searchFunc(path, 'local-search-input', 'local-search-result');

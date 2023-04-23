@@ -1,0 +1,98 @@
+@import '_variables';
+
+#friends-content {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: $border-radius;
+    padding: 20px;
+
+    .friends-list {
+        display: flex;
+        flex-direction: columns;
+        flex-wrap: wrap;
+        gap: 12px;
+
+        .friends-item {
+            position: relative;
+            border: 1px solid #ddd;
+            overflow: hidden;
+            width: 100%;
+            height: 85px;
+            border-radius: 12px;
+            line-height: 1;
+            background: rgba(255, 255, 255, 0.6);
+            transition: 0.5s;
+
+            &:hover {
+                background: $primary-color;
+                border-color: $primary-color;
+                box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            }
+
+            a {
+                display: flex;
+                height: 100%;
+                align-items: center;
+
+                &:hover {
+                    color: $text-active-color;
+                }
+
+                .avatar {
+                    display: flex;
+                    flex-decoration: column;
+                    overflow: hidden;
+                    margin: 0 10px;
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 35px;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        margin: 0;
+                        object-fit: cover;
+                    }
+                }
+
+                .userinfo {
+                    overflow: hidden;
+                    z-index: 1;
+                    width: calc(100% - 80px);
+
+                    .name {
+                        line-height: 1.6;
+                        font-weight: 700;
+                        font-size: 1.23em;
+                    }
+
+                    .desc {
+                        line-height: 1.6;
+                        font-size: 0.93em;
+                    }
+                }
+
+                .avatar-clone {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    transform: translate(35%, 35%);
+                    transition: 0.5s;
+                    width: 120px;
+                    height: 120px;
+                    opacity: 0.2;
+                    border-radius: 9999px;
+                    overflow: hidden;
+
+                    img {
+                        display: block;
+                        margin: 0 auto 20px;
+                        max-width: 100%;
+                        transition: filter 375ms ease-in 0.2s;
+                    }
+                }
+            }
+        }
+    }
+}

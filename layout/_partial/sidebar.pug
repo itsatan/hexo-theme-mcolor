@@ -1,0 +1,59 @@
+#sidebar
+    .widget-user.widget-card
+        .user-head.head-bgcolor
+            .user-avatar
+                img(src=theme.avatar, alt='avatar')
+        .user-title
+            h2 #{ theme.nickname }
+            p #{ theme.signature }
+        .user-statistics
+            .statistics-item
+                .length #{site.posts.length}
+                .headline 文章数
+            .statistics-item
+                .length #{ site.categories.length }
+                .headline 分类数
+            .statistics-item
+                .length #{ site.tags.length }
+                .headline 标签数
+        .user-btns
+            a(href="https://github.com/itsatan").user-btn-blue
+                .iconfont.icon-github
+                span Github
+            a(href="/").user-btn-orange
+                .iconfont.icon-home
+                span 首页
+    if theme.article_enable && !is_home()
+        .side-item.widget-article.widget-card
+            h4 最新文章
+            i.ios
+            .content
+                if site.posts
+                    each post in site.posts.sort('date', -1).limit(10).data
+                        .content-item
+                            a(href=url_for(post.path), title=`${post.title||'无标题'}`) #{ post.title|| '无标题' }
+                            span #{ time(post.date, 'MM-DD') }
+    if theme.tags_enable
+        .side-item.widget-tags.widget-card
+            h4 我的标签
+            i.ios
+            .content
+                if site.tags.data
+                    each item in site.tags.data
+                        a(href=url_for(item.path)).content-item ##{item.name}
+    if theme.ads.enable
+        each ad in theme.ads.ad
+            .widget-ad.widget-card
+                a(href=ad.link,title=`${ad.desc||'无标题'}`)
+                    img(src=ad.picture, alt=ad.desc)
+    if theme.broadcast.enable
+        .side-item.widget-broadcast.widget-card
+            h4 坎坷经历
+            i.ios
+            .content
+                each item in theme.broadcast.record
+                    h5 #{ item.text }
+                if theme.busuanzi && theme.busuanzi.enable
+                    p#busuanzi_container_site_pv 当前总访问量
+                        span#busuanzi_value_site_pv
+                        span 人次

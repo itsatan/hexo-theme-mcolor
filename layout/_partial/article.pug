@@ -1,0 +1,12 @@
+if page.posts.length > 0
+    #article
+        each post in page.posts.sort('date', -1).limit(10).toArray()
+            .article-item
+                div.article-left(class=post.cover_picture?'is_cover':'')
+                    a.article-title(href=url_for(post.path), title=`${post.title||'无标题'}`) #{ post.title|| '无标题' }
+                    .article-preview #{ post.intro?post.intro:truncate(strip_html(post.content),{length: 100,omission:'...'}) }
+                    .article-time #{ time(post.date, 'YYYY-MM-DD') }
+                if post.cover_picture
+                    a.img-wrapper(href=url_for(post.path), title=`${post.title||'无标题'}` style=`background-image: url(${post.cover_picture})`)
+        if page.total > 1
+            #paginator!= paginator({prev_text: '上一页',next_text: '下一页'})

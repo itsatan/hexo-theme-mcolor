@@ -1,0 +1,15 @@
+include ./_partial/sidebar.pug
+#section
+    include ./_partial/menu.pug
+    #friends-content
+        .friends-list
+            each friend in theme.friends
+                .friends-item
+                    a(href=friend.link)
+                        .avatar
+                            img(src=friend.avatar alt=friend.name)
+                        .userinfo
+                            h5.name #{friend.name}
+                            span.desc #{friend.desc}
+                        .avatar-clone
+                            img(src=friend.avatar alt=friend.name)

@@ -1,0 +1,4 @@
+nav#menu
+    .list
+        each item in theme.menu
+            a(href=item.url,class=is_current(item.route) ? 'active' : (is_current('page') && item.route==='/') ? 'active' : '')= item.label

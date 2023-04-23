@@ -1,0 +1,10 @@
+include ./_partial/sidebar.pug
+
+#section
+    include ./_partial/menu.pug
+    #categories
+        each category in site.categories.data
+            a.catalog_magnet(href=url_for(category.path))
+                span.title #{category.name}
+                    span.subtitle #{category.posts.length}POSTS
+                i.iconfont.icon-arrow-circle-right

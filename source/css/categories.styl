@@ -1,0 +1,42 @@
+@import '_variables';
+
+#categories {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: $border-radius;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .catalog_magnet {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 50px;
+        padding: 10px;
+        color: $text-defaulr-color;
+        background: #f2f2f2;
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: all .3s ease-in-out;
+        .title {
+            font-weight: 500;
+            .subtitle {
+                font-size: .1rem;
+                padding-left: .2rem;
+            }
+        }
+
+        i {
+            font-size: 1.2rem;
+        }
+
+        &:hover {
+            padding: 10px 20px;
+            color: $text-active-color;
+            background-color: $primary-color
+        }
+    }
+}
